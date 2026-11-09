@@ -1,0 +1,25 @@
+
+class HangmanGame:
+    """Representa el estado y el progreso de una partida de ahorcado."""
+
+    def __init__(self, word):
+        """Inicializa una nueva partida."""
+        self.word = word.lower()
+        self.guessed_letters = []
+        self.max_errors = 6
+        self.errors = 0
+
+    def display_progress(self):
+        """Muestra las letras adivinadas y oculta las restantes."""
+        progress = ""
+
+        for letter in self.word:
+            if letter.isalpha():
+                if letter in self.guessed_letters:
+                    progress += letter + " "
+                else:
+                    progress += "_ "
+            else:
+                progress += letter + " "
+
+        return progress.strip()
