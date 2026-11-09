@@ -14,13 +14,12 @@ class HangmanGame:
         progress = ""
 
         for letter in self.word:
-            if letter.isalpha():
-                if letter in self.guessed_letters:
-                    progress += letter + " "
-                else:
-                    progress += "_ "
+            if not letter.isalpha():
+                progress = progress + letter + " "
+            elif letter in self.guessed_letters:
+                progress = progress + letter + " "
             else:
-                progress += letter + " "
+                progress = progress + "_ "
 
         return progress.strip()
 
