@@ -11,6 +11,7 @@ def main():
     game = HangmanGame(word)
 
     print("¡Bienvenido al juego del ahorcado!")
+    game.display_hangman()
     print("\nPalabra:", game.display_progress())
 
     while not game.is_won() and not game.is_lost():
@@ -26,8 +27,10 @@ def main():
 
         if game.process_guess(letter):
             print("¡Correcto! La letra está en la palabra.")
+            game.display_hangman()
         else:
             print("Incorrecto. La letra no está en la palabra.")
+            game.display_hangman()
 
         print("\nPalabra:", game.display_progress())
         print("Letras adivinadas:", game.guessed_letters)
