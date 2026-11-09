@@ -11,10 +11,13 @@ def main():
     game = HangmanGame(word)
 
     print("¡Bienvenido al juego del ahorcado!")
-    print(game.display_progress())
 
     while True:
-        letter = input("Ingresa una letra: ").strip().lower()
+        print("\nPalabra:", game.display_progress())
+        print("Letras adivinadas:", game.guessed_letters)
+        print("Intentos restantes:", game.max_errors - game.errors)
+
+        letter = input("\nIngresa una letra: ").strip().lower()
 
         if len(letter) != 1 or not letter.isalpha():
             print("Entrada no válida. Ingresa una sola letra.")
@@ -24,10 +27,10 @@ def main():
             print("Ya ingresaste esa letra. Intenta con otra.")
             continue
 
-        game.guessed_letters.append(letter)
-        print("Letra ingresada correctamente.")
-        break
-
+        if game.process_guess(letter):
+            print("¡Correcto! La letra está en la palabra.")
+        else:
+            print("Incorrecto. La letra no está en la palabra.")
 
 if __name__ == "__main__":
     main()
