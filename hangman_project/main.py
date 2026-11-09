@@ -5,7 +5,8 @@ from game import HangmanGame
 from utils import get_random_word
 
 
-def main():
+# Ejecuta una partida completa del juego
+def play_game():
     """Inicia el juego y solicita una letra válida al usuario."""
     word = get_random_word()
     game = HangmanGame(word)
@@ -27,10 +28,10 @@ def main():
 
         if game.process_guess(letter):
             print("¡Correcto! La letra está en la palabra.")
-            game.display_hangman()
         else:
             print("Incorrecto. La letra no está en la palabra.")
-            game.display_hangman()
+
+        game.display_hangman()
 
         print("\nPalabra:", game.display_progress())
         print("Letras adivinadas:", game.guessed_letters)
@@ -42,7 +43,23 @@ def main():
     else:
         print("\nTe quedaste sin intentos. Fin del juego.")
         print("La palabra era:", game.word)
+
+
+def main():
+    """Permite jugar varias partidas"""
+    answer = "s"
+
+    while answer in ("s", "si"):
+        play_game()
+
+        answer = input("\n¿Quieres seguir jugando? (s/n) ").strip().lower()
+
+        while answer not in ("s", "si", "n", "no"):
+            print("Respuesta no válida. Ingresa 's' o 'n'.")    
+            answer = input("\n¿Quieres seguir jugando? (s/n) ").strip().lower()
     
+    print("\n¡Gracias por jugar!")
+
 
 if __name__ == "__main__":
     main()
