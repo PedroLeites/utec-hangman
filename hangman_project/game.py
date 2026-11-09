@@ -6,6 +6,7 @@ class HangmanGame:
         """Inicializa una nueva partida."""
         self.word = word.lower()
         self.guessed_letters = []
+        self.incorrect_letters = []
         self.max_errors = 6
         self.errors = 0
 
@@ -31,7 +32,10 @@ class HangmanGame:
                 self.guessed_letters.append(letter)
             return True
 
-        self.errors += 1
+        if letter not in self.incorrect_letters:
+            self.incorrect_letters.append(letter)
+            self.errors += 1
+            
         return False
 
 

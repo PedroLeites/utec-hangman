@@ -21,7 +21,7 @@ def main():
             print("Entrada no válida. Ingresa una sola letra.")
             continue
 
-        if letter in game.guessed_letters:
+        if letter in game.guessed_letters or letter in game.incorrect_letters:
             print("Ya ingresaste esa letra. Intenta con otra.")
             continue
 
@@ -34,6 +34,7 @@ def main():
 
         print("\nPalabra:", game.display_progress())
         print("Letras adivinadas:", game.guessed_letters)
+        print("Letras incorrectas:", game.incorrect_letters)
         print("Intentos restantes:", game.max_errors - game.errors)
     
     if game.is_won():
