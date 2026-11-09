@@ -10,13 +10,7 @@ def get_random_word():
         for line in file:
             word = line.strip()
 
-            # Conserva únicamente letras y espacios.
-            word = "".join(
-                char for char in word
-                if char.isalpha() or char.isspace()
-            )
-
-            if word.strip():
+            if word:
                 words.append(word)
 
     if not words:
