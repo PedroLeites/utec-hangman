@@ -23,3 +23,14 @@ class HangmanGame:
                 progress += letter + " "
 
         return progress.strip()
+
+
+    def process_guess(self, letter):
+        """Procesa una letra ingresada por el jugador."""
+        if letter in self.word:
+            if letter not in self.guessed_letters:
+                self.guessed_letters.append(letter)
+            return True
+
+        self.errors += 1
+        return False
